@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_150743) do
+ActiveRecord::Schema.define(version: 2022_09_14_134055) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "title"
     t.integer "xp"
-    t.string "class"
+    t.string "klass"
     t.integer "strength"
     t.integer "dexterity"
     t.integer "wisdom"
     t.integer "constitution"
     t.integer "intelligence"
     t.integer "charisma"
+    t.integer "gold"
+    t.integer "user_id"
   end
 
   create_table "enemies", force: :cascade do |t|
@@ -37,11 +39,12 @@ ActiveRecord::Schema.define(version: 2022_09_12_150743) do
     t.integer "intelligence"
     t.integer "charisma"
     t.integer "rarity"
+    t.integer "gold"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "item_type"
     t.integer "bonus"
     t.string "bonus_type"
     t.integer "value"
