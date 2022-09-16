@@ -2,11 +2,15 @@ html, body {
     padding: 0px;
     margin: 0px;
     font-family: 'Ultra', serif;
-    color: white;
+    color: black;
     background-image: url("../assets/images/background_ore.gif");
     height: 100%;
     overflow-y: auto;
     
+}
+
+.button {
+    color: black;
 }
 
 
@@ -15,25 +19,87 @@ html, body {
 }
 
 .App {
-    
+    color: black;
+}
+
+.home {
+    text-align: center;
+    color: white;
+    background-image: url("../assets/images/ruby.gif");
+    background-repeat: round;
+    background-size: 200px 200px;
+    height: 200px;
+}
+
+.character-make {
+    padding-bottom: 35px;
+    margin: auto;
+    margin-bottom: 35px;
+    text-align: center;
+    background-image: url("../assets/images/gold_wall.png");
+    outline: goldenrod ridge 8px;
+    width: 60%;
+    color: #2a0037;
+}
+
+.character-make button {
+    background-color: black;
+    color: white;
+    outline: rgb(32, 32, 32) ridge 5px;
+    margin: auto;
+    text-align: center;
+
+}
+
+
+.character-make button.skill-button-up {
+    background-image: url("../assets/images/button_arrow.png");
+    background-size: 75px 75px;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+
+
+.character-make button.skill-button-down {
+    background-image: url("../assets/images/button_arrow.png");
+    background-size: 75px 75px;
+    transform: rotate(180deg);
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.character-make p, label {
+    font-size: large;
+    font-weight: bold;
+    width: 95%;
+}
+
+.character-make select {
+    font-size: larger;
+    font-weight: bold;
+    width: 30%;
 }
 
 .newUserFormAll {
-    padding: 10px;
-    padding-top: 2px;
+    
     text-align: center;
     font-family: Impact, Charcoal, sans-serif;
-    font-size: large;
+    font-size: larger;
     letter-spacing: 2px;
     word-spacing: 2px;
-    color: white;
-    font-weight: 400;
-    font-style: normal;
-    font-variant: normal;
+    color: rgb(7, 7, 7);
     text-transform: uppercase;
-    text-shadow: 0 0 10px #000000;
     height: fit-content;
-    background-image: url("../assets/images/background_ore.gif");
+    background-image: url("../assets/images/stone_wall.png");
+    background-size: 100px 100px;
+    outline: dimgray ridge 8px;
 }
 
 .newUserForm input, button {
@@ -43,8 +109,12 @@ html, body {
     font-size: medium;
     letter-spacing: 2px;
     word-spacing: 2px;
-    color: white;
+    color: black;
     background: white;
+    outline-style: ridge;
+    outline-offset: -5px;
+    outline-width: 5px;
+    outline-color: #6D333D;
 }
 
 .newUserForm button {
@@ -54,7 +124,18 @@ html, body {
     outline-width: 5px;
     outline-color: #6D333D;
     background-color: #1E1E1E;
+    color: white;
 }
+
+.login-buttons {
+    text-align: center;
+    background-image: url("../assets/images/dark_wood_wall.png");
+}
+
+.login-buttons button {
+    font-size: larger;
+}
+
 
 .header {
     background-image: url("../assets/images/ruby_ore.gif");
@@ -81,7 +162,6 @@ html, body {
 .header h1 {
     text-align: center;
     margin: auto;
-    padding-top: 5px;
     font-family: Impact, Charcoal, sans-serif;
     font-size: 45px;
     letter-spacing: 0px;
@@ -94,11 +174,7 @@ html, body {
     text-transform: uppercase;
     animation: glow .5s infinite alternate;
 }
-.newUserFormAll h2 {
-    margin: auto;
-    /* animation: grow 2s; */
-    animation-iteration-count: infinite;
-}
+
 
 
 .user-display {
@@ -123,9 +199,10 @@ html, body {
     width: 20%;
     height: 0;
     padding-bottom: 20%;
-    background-image: url("../assets/images/shop_item_background.png");
+    background-image: url("../assets/images/banner-large.png");
     background-size: cover;
     text-align: center;
+    color: white;
 }
 
 .character-link div {
@@ -133,26 +210,63 @@ html, body {
 }
 .character-link div p {
     font-size: smaller;
+    
 }
 
 .player-icon {
     position: absolute;
     right:0;
     top: 0;
+    width: 150px;
+    height: 150px;
+    background-image: url("../assets/images/banner.png");
+    background-size: 150px 150px;
 }
 .player-icon img {
     border-radius: 50%;
     width: 50px;
-    height: auto;
+    position: absolute;
+    top: 50px;
+    right: 50px;
     text-align: right;
     margin: auto;
     
+}
+
+.player-icon p {
+    font-size: medium;
+    color: white;
+    position: absolute;
+    width: 100px;
+    top: 0;
+    right: 25px;
 }
 
 .player-icon button {
     color: #000000;
     font-size: small;
     height: auto;
+    width: 100px;
+    max-height: 50px;
+    position: absolute;
+    top: 150px;
+    right: 25px;
+    
+}
+
+.dungeon-display {
+    text-align: center;
+    background-image: url("../assets/images/red_brick_wall.png");
+    background-size: 100px 100px;
+    outline: #310000 ridge 5px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    
+}
+
+.dungeon-display h1 {
+    color: white;
+    animation: glow .5s infinite alternate;
 }
 
 @keyframes blinker {
@@ -283,11 +397,12 @@ html, body {
 }
 
 .shop-wall-words {
-    background-image: url("../assets/images/shop_background.png");
+    background-image: url("../assets/images/gold_wall.png");
     margin: auto;
     padding: 10px;
     width: 50%;
     outline: #623805 ridge 5px;
+    color:#6D333D;
 }
 
 .shop-list-container {
@@ -319,6 +434,7 @@ html, body {
     background-size: 100px 100px;
     outline: dimgray ridge 8px;
     text-align: center;
+    padding-bottom: 35px;
 }
 
 

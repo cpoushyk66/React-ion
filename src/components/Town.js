@@ -37,7 +37,7 @@ function Town() {
             <table className="town" cellPadding={0} cellSpacing={0}>
                 <thead>
                     <tr>
-                        <td colSpan={10}><h1>Town Map</h1></td>
+                        <td style={{"color": "white"}} colSpan={10}><h1>Town Map</h1></td>
                     </tr>
                 </thead>
                 <tbody className="grass">

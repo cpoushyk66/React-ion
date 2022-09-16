@@ -8,13 +8,12 @@ class ApplicationController < Sinatra::Base
 
   get '/user/:id' do
     user = User.find(params[:id])
-    user.to_json(include: {characters: {only: [:name, :title, :klass, :xp, :gold, :id]}})
+    user.to_json(include: :characters)
   end
 
   get '/user/:id/log_in' do
-    user = User.find(params[:id])
-    user.update(last_logged_in: Time.now)
-    user.to_json
+    user = User.find(params[:id]).log_in
+    user.to_json(include: :characters)
   end
 
   post '/users' do
@@ -27,9 +26,26 @@ class ApplicationController < Sinatra::Base
     items.to_json
   end
 
+  post '/characters' do 
+    char = Character.create(name: params[:name], title: params[:title], xp: params[:xp], klass: params[:klass], strength: params[:strength], dexterity: params[:dexterity], wisdom: params[:wisdom], constitution: params[:constitution], intelligence: params[:intelligence], charisma: params[:charisma], gold: params[:gold], user_id: params[:user_id])
+    char.to_json(include: [:items, :spells])
+  end
+
   get '/character/:id' do
     char_items = Character.find(params[:id])
     char_items.to_json(include: [:items, :spells])
+  end
+
+  patch '/character/:id' do
+    char = Character.find(params[:id])
+    char.update(name: params[:name], title: params[:title], xp: params[:xp], klass: params[:klass], strength: params[:strength], dexterity: params[:dexterity], wisdom: params[:wisdom], constitution: params[:constitution], intelligence: params[:intelligence], charisma: params[:charisma], gold: params[:gold])
+    char.to_json(include: [:items, :spells])
+  end
+
+  delete '/character/:id' do
+    char = Character.find(params[:id])
+    char.destroy
+    char.to_json
   end
 
   get '/character/:id/items' do
@@ -65,6 +81,11 @@ class ApplicationController < Sinatra::Base
   get '/spells' do
     spells = Spell.all
     spells.to_json
+  end
+
+  get '/enemy/rand' do
+    enemy = Enemy.all.sample
+    enemy.to_json(include: [:spells, :items])
   end
 
   

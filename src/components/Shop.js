@@ -33,7 +33,7 @@ function Shop({updateCurrentCharacter, currentCharacter}) {
                     
                     <div className="shop-list-container">{items.length > 0 && currentCharacter != null ? (buyItems ? makeBuyTable() : makeSellTable()) : null}</div>
                 </div>
-            : null}
+            : <h1 style={{"color": "white", "verticalAlign": "middle"}}>Please Log In or Make a Character to View Shop!</h1>}
         </div>
     )
 }

@@ -1,29 +1,46 @@
 import React, {useEffect, useState} from "react";
+import MakeCharacter from "./MakeCharacter";
 import Spell from "./Spell";
 
 
-function Academy({currrentUser, currrentCharacter}) {
+function Academy({handleAddCharacter, currentUser, currrentCharacter}) {
 
-    const [spells, setSpells] = useState([])
+    const [buttonResult, setButtonResults] = useState("")
 
-    useEffect(() => {
-        fetch("http://localhost:9292/spells")
-        .then(res => res.json())
-        .then(setSpells)
-    }, [])
 
-    function makeSpells () {
-        return spells.map(spell => <Spell key={spell.id + spell.name} currentCharacter={currrentCharacter} spell={spell} />)
+    // function makeSpells () {
+    //     return spells.map(spell => <Spell key={spell.id + spell.name} currentCharacter={currrentCharacter} spell={spell} />)
+    // }
+
+
+    function processChoice() {
+        switch (buttonResult)
+        {
+            case "make":
+                return <MakeCharacter handleAddCharacter={handleAddCharacter}/>
+                break;
+            case "level":
+            break;
+            case "learn":
+            break;
+        }
     }
     return(
         <div className="academy-display">
+            { currentUser ? <div>
+
             <h1>Welcometo the Academy!</h1>
             <h2>Train up new characters!</h2>
 
-            <div>
-            {makeSpells()}
-            </div>
+            <button onClick={() => setButtonResults("make")}>Make Character!</button>
+
+            <button onClick={() => setButtonResults("level")}>Level Character</button>
+
+            <button onClick={() => setButtonResults("learn")}>Learn Spells!</button>
+
+            {processChoice()}
         
+            </div> : <h1>Please Log In to See Academy!</h1>}
         </div>
     )
 }
